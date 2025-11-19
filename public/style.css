@@ -1,0 +1,54 @@
+/* style.css - polished TicTacToe styling */
+body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  grid-template-rows: repeat(3, 110px);
+  gap: 10px;
+  padding: 12px;
+  background: linear-gradient(180deg, #ffffff, #fbfbfb);
+  border-radius: 12px;
+  border: 1px solid #e6e6e6;
+  box-shadow: 0 6px 18px rgba(15,15,15,0.06);
+}
+
+@media (max-width: 420px) {
+  .board { grid-template-columns: repeat(3, 86px); grid-template-rows: repeat(3,86px); gap:8px; padding:10px; }
+}
+
+.cell {
+  width: 110px; height: 110px;
+  display:flex; align-items:center; justify-content:center;
+  font-size:56px; font-weight:700; color:#202124;
+  background: linear-gradient(180deg, #ffffff, #fafafa);
+  border-radius: 10px;
+  border: 2px solid #ececec;
+  cursor: pointer; user-select: none;
+  transition: transform .08s ease, box-shadow .08s ease;
+  box-shadow: 0 2px 8px rgba(20,20,20,0.03);
+}
+
+@media (max-width: 420px) { .cell { width:86px; height:86px; font-size:44px } }
+
+.cell:hover:not(.disabled) { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(20,20,20,0.06); }
+.cell.disabled { cursor:not-allowed; opacity:0.78; transform:none; }
+
+.cell.x { color: #0d6efd; }   /* blue for X */
+.cell.o { color: #dc3545; }   /* red for O */
+
+.cell.winner {
+  background: linear-gradient(90deg, rgba(255,241,208,1) 0%, rgba(255,249,230,1) 100%);
+  border: 2px solid #ffdd57;
+  box-shadow: 0 12px 28px rgba(255,205,64,0.12);
+  transform: scale(1.03);
+}
+
+/* message */
+#message { min-height: 24px; margin-bottom: 6px; color:#333; font-weight:600; }
+
+/* players area */
+#players { color: #444; }
+
+/* small utility */
+.small-muted { color:#6b7280; font-size:12px; }
