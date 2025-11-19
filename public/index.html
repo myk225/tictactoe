@@ -2,58 +2,31 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Realtime TicTacToe</title>
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
+  <title>Realtime TicTacToe (vanilla)</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-light">
-  <div class="container py-4">
-    <div class="d-flex gap-3 align-items-center mb-3">
-      <div class="input-group w-auto">
-        <span class="input-group-text">Room</span>
-        <input id="room" class="form-control" placeholder="room id" value="demo" />
-      </div>
+<body>
+  <div id="app">
+    <header id="controls">
+      <input id="room" placeholder="room id" value="demo" />
+      <input id="name" placeholder="your name" value="Guest" />
+      <button id="join">Join</button>
+      <button id="leave">Leave</button>
+      <button id="rematch">Request Rematch</button>
+      <div id="status">disconnected</div>
+    </header>
 
-      <div class="input-group w-auto">
-        <span class="input-group-text">Name</span>
-        <input id="name" class="form-control" placeholder="your name" value="Guest" />
-      </div>
-
-      <button id="join" class="btn btn-primary">Join</button>
-      <button id="leave" class="btn btn-outline-secondary">Leave</button>
-      <button id="rematch" class="btn btn-warning">Request Rematch</button>
-
-      <div class="ms-auto text-end">
-        <div id="status" class="text-muted small">disconnected</div>
-        <div id="players" class="small mt-1"></div>
-      </div>
-    </div>
-
-    <div class="row justify-content-center">
-      <div class="col-auto">
-        <div id="message" class="mb-2 fs-6 text-center"></div>
-
-        <div id="board" class="board shadow-sm bg-white rounded"></div>
-
-        <div class="mt-3 text-center">
-          <small class="text-muted">Two-player realtime Tic-Tac-Toe • Open in two tabs to play</small>
-        </div>
-      </div>
-    </div>
+    <main id="game">
+      <div id="players"></div>
+      <div id="board" class="board"></div>
+      <div id="message" class="message"></div>
+    </main>
   </div>
 
-  <!-- Toast container -->
-  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1100;">
-    <div id="toastHolder"></div>
-  </div>
-
-  <!-- Socket.io -->
+  <!-- socket.io client (served by your server) -->
   <script src="/socket.io/socket.io.js"></script>
-  <!-- Bootstrap JS (for toasts) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- app -->
   <script src="client.js"></script>
 </body>
 </html>
